@@ -4,7 +4,10 @@
 **/
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 // As an example of a generic function, SlicesIndex takes a slice of any
 // comparable type and an element of that type and returns the index
@@ -55,7 +58,7 @@ func (lst *List[T]) AllElements() []T {
 }
 
 func main() {
-	s := []string{"foo", "bar", "zoo"}
+	s := []string{"foo", "zoo", "bar"}
 
 	// When invoking generic functions, we can often rely on type inference.
 	// Note that we don’t have to specify the types for S and E when calling
@@ -69,5 +72,7 @@ func main() {
 	lst.Push(10)
 	lst.Push(13)
 	lst.Push(23)
+
+	fmt.Printf("type of lst: %s\n\n", reflect.TypeOf(lst).String())
 	fmt.Println("list:", lst.AllElements())
 }
